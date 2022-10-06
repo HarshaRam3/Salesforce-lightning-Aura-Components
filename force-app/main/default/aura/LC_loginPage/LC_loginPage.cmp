@@ -1,0 +1,13 @@
+<aura:component >
+    <div class="c-container">
+        <lightning:layout verticalAlign="stretch" multipleRows="true" class="x-large">
+            <lightning:layoutItem flexibility="auto" padding="around-small" class="custom-box">
+                1
+            </lightning:layoutItem>
+            <lightning:layoutItem flexibility="auto" padding="around-small" class="custom-box">
+                2
+            </lightning:layoutItem>
+
+        </lightning:layout>
+    </div>
+</aura:component>

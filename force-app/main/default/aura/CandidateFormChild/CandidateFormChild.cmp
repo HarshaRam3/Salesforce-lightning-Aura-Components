@@ -1,0 +1,34 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="createCandidate">
+
+    <aura:attribute name="candidate" type="Candidate__c" default="{sObjectType:'Candidate__c'}"/>
+    <aura:attribute name="newAcc" type="Account" default="{sObjectType:'Account'}"/>
+    <aura:attribute name="openpositions" type="List" />
+    <aura:attribute name="selected" type="String"/>
+    
+    <aura:registerEvent name="sndData" type="c:SendData"/>
+    <aura:handler name="init" value="{!this}" action="{!c.onLoad}"/> 
+    
+    <lightning:card>
+        <aura:set attribute="title">
+            <h1> Add Candidate </h1>
+        </aura:set>
+        <aura:set attribute="actions">
+            <lightning:button variant="success" name="save" label="Save" onclick="{!c.callme}"/>
+            <lightning:button variant="destructive" name="clear" label="Clear" onclick="{!c.clear}"/>
+        </aura:set>
+        <div class="slds-p-arnd_medium">
+            <lightning:input label="Name" name="name" type="String" required="true" value="{!v.candidate.Name}"/>
+            <lightning:input label="Phone" name="phone" type="String" value="{!v.candidate.Phone__c}"/>
+            <lightning:input label="Email" name="email" type="String" value="{!v.candidate.Email__c}"/>
+            <lightning:input label="Experience" name="experience" type="String" value="{!v.candidate.Experience__c}"/>
+            <lightning:input label="Notice" name="notice" type="String" value="{!v.candidate.Notice_Period__c}"/>
+            <lightning:input label="Job Id" name="jobid" type="String" value="{!v.candidate.Position_Applied__c.id}"/>
+            <lightning:select aura:id="select" label="Position" name="position" value="{!v.candidate.Position_Applied__c}">
+                <option value="">-- None --</option>
+                <aura:iteration items="{!v.openpositions}" var="option">
+                    <option value="{!option}" text="{!option}"/>
+                </aura:iteration>
+            </lightning:select>
+        </div>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,22 @@
+<aura:component >
+    <aura:attribute name="title" type="String" default="Custom Title"/>
+    <aura:registerEvent name="myEvent" type="c:Event_Data_form_LE"/>
+    <aura:attribute name="EmployeeName" type="String"/>
+    <aura:attribute name="age" type="integer"/>
+    <aura:attribute name="Designation" type="String"/>
+    
+    <Lightning:card iconName="action:user">
+        <aura:set attribute="title">
+            <div>
+            <h1>Employee Form</h1>
+            </div>
+        </aura:set>
+        <lightning:input label ="Employee Name" name="Empname" type="String" value="{!v.EmployeeName}"/>
+        <lightning:input label ="Employee age" name="Empage" type="integer" value="{!v.age}" pattern="[0-9]*"/>
+        <lightning:input label ="Employee Designation" name="EmpDesignation" type="String" value="{!v.Designation}"/>
+        <aura:set attribute="actions">
+            <lightning:button name="SubmitForm" label="SUBMIT" onclick="{!c.callme}"/>
+            <lightning:button name="CancelForm" label="CANCEL" onclick="{!c.callmecancel}"/>
+        </aura:set>
+    </Lightning:card>
+</aura:component>

@@ -1,0 +1,16 @@
+<aura:component implements="flexiPage:availableForAllPageTypes">
+    <aura:attribute name="newAcc" type="Account" default="{sObjectType:'Account'}"/>
+    <aura:registerEvent name="myEvent" type="c:Account_Creation_LE"/>
+    
+    <lightning:card title="Create Account">
+        
+        <aura:set attribute="actions">
+            <lightning:button name="save" label="Save" onclick="{!c.saveMe}"/>
+            <lightning:button name="clear" label="Clear" onclick="{!c.clear}"/>
+        </aura:set>
+        
+        <lightning:input auraid="nam" name="accName" label="Account Name" value="{!v.newAcc.Name}"/>
+    	<lightning:input auraid="pho" name="accPhone" label="Account Phone" value="{!v.newAcc.Phone}"/>
+        
+    </lightning:card>
+</aura:component>

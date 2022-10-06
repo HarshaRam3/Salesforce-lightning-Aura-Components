@@ -1,0 +1,9 @@
+<aura:component>
+    <lightning:recordEditForm
+                              objectApiName="Account"
+                              onload="{!c.handleCreateLoad}">
+        <lightning:messages />
+        <lightning:inputField aura:id="nameField" fieldName="Name"/>
+        <lightning:button class="slds-m-top_small" type="submit" label="Create new" />
+    </lightning:recordEditForm>
+</aura:component>

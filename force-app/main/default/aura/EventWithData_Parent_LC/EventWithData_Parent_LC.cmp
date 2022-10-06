@@ -1,0 +1,9 @@
+<aura:component >
+    <aura:handler name="Second" event="c:EventWithData_Example2_LE" action="{!c.showme}"/>
+    <aura:attribute name="Employee" type="String"/>
+	<lightning:card title="Parent Component">
+    	This is parent component
+        We have got this value from child component {!v.Employee}!        
+    </lightning:card>
+    <c:EventWithData_Child_LC/>
+</aura:component>

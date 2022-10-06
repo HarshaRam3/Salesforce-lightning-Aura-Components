@@ -1,0 +1,7 @@
+<aura:component>
+    <lightning:notificationsLibrary aura:id="notifLib" />
+    <lightning:recordForm objectApiName="Account"
+                          layoutType="Full"
+                          columns="2"
+                          onerror="{!c.handleError}"/>
+</aura:component>

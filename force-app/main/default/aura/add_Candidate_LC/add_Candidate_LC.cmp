@@ -1,0 +1,26 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="add_Candidate">
+    <aura:attribute name="candidate" type="Candidate__c" default="{'sobjectType':'Candidate__c'}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="openPositions" type="List" />
+    <aura:registerEvent name="myEvent" type="c.notifyCandidateView"/>
+    <lightning:card title="Add Candidate">
+        <aura:set attribute="actions">
+            <lightning:button name="csave" label="Save" onclick="{!c.saveMe}"/>
+            <lightning:button name="cclear" label="Clear" onclick="{!c.clearMe}"/>
+        </aura:set>
+        
+        <div class="box">
+            <lightning:input name="cname" label="Candidate Name" value="{!v.candidate.Name}"/>
+            <lightning:input name="cphone" label="Candidate Phone" value="{!v.candidate.Phone__c}"/>
+            <lightning:input name="cemail" label="Candidate Email" value="{!v.candidate.Email__c}"/>
+            <lightning:select label="Position Applied" name="capplied" value="{!v.candidate.Position_Applied__c}">
+                <option value="">---None---</option>
+                <aura:iteration items="{!v.openPositions}" var="op">
+                    <option value="{!op}" text="{!op}"/>
+                </aura:iteration>
+            </lightning:select>
+            <lightning:input name="cexperience" label="Candidate Experience" value="{!v.candidate.Experience__c}"/>
+            <lightning:input name="cnotice" label="Candidate Notice Period" value="{!v.candidate.Notice_Period__c}"/>
+        </div>
+    </lightning:card>    
+</aura:component>

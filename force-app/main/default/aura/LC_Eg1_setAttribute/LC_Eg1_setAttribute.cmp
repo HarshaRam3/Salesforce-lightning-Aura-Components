@@ -1,0 +1,16 @@
+<aura:component >
+    <aura:attribute name="myname" type="String"/>
+    <aura:attribute name="age" type="Integer"/>
+    <aura:attribute name="salary" type="Integer"/>
+    <div align="center">
+        <lightning:card title="My details">
+            Name  : {!v.myname}	<br/>
+            Age   : {!v.age}	<br/>
+            Salary: {!v.salary} <br/>
+            <aura:set attribute="actions">
+                <Lightning:button label="Details" onclick="{!c.callme}"/>
+                <lightning:button label="Clear" variant="destructive" onclick="{!c.clear}"/>
+            </aura:set>
+        </lightning:card>
+    </div>
+</aura:component>

@@ -1,0 +1,6 @@
+<aura:component >
+    <aura:attribute name="cname" type="Contact"/>
+    <aura:handler name="first" event="c:Event_contact_LE" action="{!c.show}"/>
+    {!v.cname}
+    <c:Event_contact_LC/>
+</aura:component>

@@ -1,0 +1,16 @@
+.THIS .myDiv{
+  	  text-align: left;
+}
+.THIS .card{
+	  background-color: lightblue;    
+  	  text-align: center;	
+}
+.THIS .heading{
+      font-size: 13px;
+}
+.THIS .subHeading{
+      font-size: 15px;
+}
+.THIS.bg{
+    background-color: #f1f8f9;
+}

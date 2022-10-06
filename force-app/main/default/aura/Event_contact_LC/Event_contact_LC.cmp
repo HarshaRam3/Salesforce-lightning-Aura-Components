@@ -1,0 +1,10 @@
+<aura:component >
+    <aura:attribute name="cname" type="String"/>
+    <aura:registerEvent name="first" type="c:Event_contact_LE"/>
+	<lightning:card title="Contact info">
+        <aura:set attribute="actions">
+            <lightning:button label="submit" onclick="{!c.send}"/>
+        </aura:set>
+        <lightning:input label="Cname" value="{!v.cname}"/>
+    </lightning:card>
+</aura:component>

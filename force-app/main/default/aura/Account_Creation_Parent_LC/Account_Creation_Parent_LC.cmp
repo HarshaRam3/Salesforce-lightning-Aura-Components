@@ -1,0 +1,11 @@
+<aura:component >
+    <aura:attribute name="accList" type="List" default="[]"/>
+    <aura:attribute name="acolumns" type="List"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="myEvent" event="c:Account_Creation_LE" action="{!c.showme}"/>
+    
+    <c:Account_Creation_Child_LC/>
+    
+    <lightning:dataTable keyField="id" data="{!v.accList}" columns="{!v.acolumns}"/>
+</aura:component>

@@ -1,0 +1,26 @@
+<aura:component controller="newsWrapperFullClass" implements="flexipage:availableForAllPageTypes">
+<aura:attribute name="News" type="Object"/>
+<aura:attribute name="columns" type="List"/>
+<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+<div class="myDiv">
+    <lightning:formattedRichText value="&lt;b&gt;Top Breaking News For You!&lt;/b&gt;" class="blink_me"/>
+    <br></br>
+    <aura:iteration items="{!v.News.articles }" var="item">
+       <p class="headlines"> {!item.title} </p>
+       <img src="{!item.urlToImage}" alt="nothing" width="500" height="600" class="center"></img>
+       <p class="bold"> Author : {!item.author}</p>
+       <p class="bold"> {!item.publishedAt} : {!item.description} </p>
+       <p class="bold"> {!item.content} </p>
+       <a href="{!item.url}" target="_blank">Click here to know more..</a>
+       <br></br>
+       <p></p>
+    </aura:iteration>   
+</div>
+
+
+
+
+
+
+
+</aura:component>

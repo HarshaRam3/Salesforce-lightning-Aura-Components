@@ -1,0 +1,23 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="acc" type="Account"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>   
+    <lightning:card title="Accounts">
+        
+        <div class="c-container">
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem title="Accounts" size="6">
+                    <lightning:datatable keyField="id" data="{!v.acc}" columns="{!v.columns}">
+                        
+                    </lightning:datatable>
+                </lightning:layoutItem>
+                <lightning:layoutItem title="Selected Accounts" size="6">
+                    22121
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </lightning:card>
+    <aura:set attribute="footer" >
+            <lightning:button label="Select" name="click" onClick="{!c.Show}"/>
+        </aura:set> 
+</aura:component>

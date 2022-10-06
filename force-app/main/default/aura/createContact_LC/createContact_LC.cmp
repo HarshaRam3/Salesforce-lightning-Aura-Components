@@ -1,0 +1,15 @@
+<aura:component controller="AccountCard_controller" implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="myTitle" type="String" default="New Contact"/>
+    <lightning:card >
+        <div class="slds-align_absolute-center">
+            {!v.myTitle}
+        </div>
+        <lightning:input label="First Name" type="text"/>
+        <lightning:input label="Last Name" required="true" type="text"/>
+        <lightning:input label="email" type="email"/>
+        <lightning:input label="Phone" type="phone"/>
+        <lightning:input label="Account Name" type="Account"/>
+        <lightning:input label="Title" type="Text"/>
+        
+    </lightning:card>
+</aura:component>

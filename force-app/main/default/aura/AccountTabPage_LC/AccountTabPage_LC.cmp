@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <div>
+        <lightning:tabset>
+            <lightning:tab label="Related">
+                one
+            </lightning:tab>
+            <lightning:tab label="Details">
+                two
+            </lightning:tab>
+            <lightning:tab label="News">
+                three
+            </lightning:tab>
+        </lightning:tabset>
+    </div>
+</aura:component>

@@ -1,0 +1,21 @@
+<aura:component >
+    <aura:attribute name="amount" type="Integer"/>
+    <aura:attribute name="roi" type="Integer"/>
+    <aura:attribute name="term" type="Integer"/>
+    <aura:attribute name="si" type="Integer"/>
+    <aura:attribute name="ci" type="Integer"/>
+    <lightning:card title="Interest calculator" iconName="custom:custom17">
+        <lightning:input label="Amount" type="Number" value="{!v.amount}"/>
+        <lightning:input label="roi" type="Number" value="{!v.roi}"/>
+        <lightning:input label="term" type="Number" value="{!v.term}"/>
+        <lightning:input label="Interest accumulated at the end of Term" type="percentage" readonly="true" value="{!v.si}"/>
+        <lightning:input label="Total Maturity amount" type="Number" readonly="true" value="{!v.ci}"/>
+        <aura:set attribute="footer">
+        	<lightning:buttonGroup>
+                <lightning:button label="Clear" variant="Destructive" onclick="{!c.clear}"/>
+                <lightning:button label="Simple Interest" onclick="{!c.siminterest}"/>
+                <lightning:button label="Compound Interest" onclick="{!c.compinterest}"/>
+            </lightning:buttonGroup>
+        </aura:set>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,15 @@
+<aura:component >
+    <aura:attribute name="EmployeeNam" type="String"/>
+    <aura:attribute name="ag" type="integer"/>
+    <aura:attribute name="Designatio" type="String"/>
+    <aura:attribute name="id" type="boolean" default="false"/>
+    <aura:handler name="myEvent" event="c:Event_Data_form_LE" action="{!c.getData}"/>
+    <aura:if isTrue="{!v.id}">
+        <Lightning:card title="Employee Info :">
+            Name = {!v.EmployeeNam}<br/>
+            Age = {!v.ag}<br/>
+            Designation = {!v.Designatio}<br/>
+        </Lightning:card>
+    </aura:if>
+    <c:Event_Data_form_Child_LC/>
+</aura:component>

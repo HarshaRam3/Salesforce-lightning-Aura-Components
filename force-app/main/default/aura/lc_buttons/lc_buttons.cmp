@@ -1,0 +1,27 @@
+<aura:component>
+    <div>
+        <lightning:card title="Lead" iconName="standard:lead">
+            <aura:set attribute="actions">
+                <lightning:button label="Follow" iconName="utility:add"/>
+                <lightning:buttonGroup>
+                    <lightning:button label="New Case"/>
+                    <lightning:button label="New Note"/>
+                    <lightning:button label="Submit for Approval"/>
+                </lightning:buttonGroup>
+                <lightning:buttonmenu>
+                    <lightning:menuItem label="Clone"/>
+                    <lightning:menuItem label="Checck for new data"/>
+                    <lightning:menuItem label="Delete"/>
+                    <lightning:menuItem label="Sharing"/>
+                    <lightning:menuItem label="Edit"/>
+                    <lightning:menuItem label="Change owner"/>
+                    <lightning:menuItem label="Convert"/>
+                </lightning:buttonmenu>
+            </aura:set>
+            <aura:set attribute="footer">
+                <c:LC_Eg1_setAttribute/>
+            </aura:set>
+                
+        </lightning:card>
+    </div>
+</aura:component>

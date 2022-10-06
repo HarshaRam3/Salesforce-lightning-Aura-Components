@@ -1,0 +1,39 @@
+.THIS.carousel-inner {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.THIS .breaking{
+    font-size: large;
+}
+
+.THIS .headlines{
+    font-size: medium;
+    font-weight: bold;
+}
+
+.THIS .blink_me {
+    font-size: x-large;
+    color: red ;
+    animation: blinker 1s linear infinite;
+  }
+  
+  @keyframes blinker {  
+    50% { opacity: 0; }
+  }
+
+.THIS .bold {
+    font-weight: bold;
+}
+
+.THIS.myDiv {
+    
+    background-color: rgb(231, 236, 237);    
+  }
+
+.THIS.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
