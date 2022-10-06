@@ -1,0 +1,25 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,force:hasSObjectName" 
+                controller='DynamicBindingDemoController'
+                access="global" >
+    <!-- call the doInit method to load the list of All the Available Objects into the Org -->
+    <aura:handler name='init' value='{!this}' action='{!c.doInit}' />
+    <aura:attribute name='objectList' type='List' />
+    <aura:attribute name="isSending" type="boolean" />
+
+                    <!-- show the list of All the Object 
+                    <lightning:select name="selectObject" label="Select an Object" 
+                                      onchange="{!c.doHandleChange}" aura:id='selectObject'>
+                        <option value="" text="- None -" />-->
+                        <aura:iteration items='{!v.objectList}' var='obj'>
+                            <option value="{!obj.key}" text="{!obj.value}" />
+                        </aura:iteration>
+            <br/>
+            <ui:scrollerWrapper class="scrollerSize">
+                <div class="slds-size_2-of-2">
+                    <div id='sfdctable' aura:id='sfdcDiv'>
+                        <!-- devision that will show the dynamic content -->
+                    </div>
+                </div>
+            </ui:scrollerWrapper>
+
+</aura:component>

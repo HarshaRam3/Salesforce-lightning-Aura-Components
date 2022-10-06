@@ -1,0 +1,7 @@
+<aura:component controller="genericObjectDataTable" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="objName" type="String" />
+    <aura:attribute name="fieldName" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+       <lightning:formattedText aura:id="fielddata" />
+</aura:component>

@@ -1,0 +1,36 @@
+<aura:component controller="FireClass"
+                implements="flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:appHostable" >
+    <aura:attribute type="String" name="object" default="Account"/>
+        <aura:attribute type="String" name="Fields" default="Id, Name, CreatedById, LastModifiedById"/>
+    <aura:attribute name="pickl" type="List" />
+    <aura:attribute name="selectedValue" type="String" />
+    <aura:attribute type="Account[]" name="acctList"/>
+    <aura:attribute name="mycolumns1" type="List"/>
+
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    
+    <div class = "slds-align_absolute-center">
+        <lightning:select aura:id="selectid" label="Select Object" name="obj" value="{!v.selectedValue}">
+            <option value="" text="- None -" />
+            <aura:iteration items="{!v.pickl}" var="per">
+                <option value="{!per}" text="{!per}" />
+            </aura:iteration>
+        </lightning:select>
+        <br/>  
+                <lightning:button label="Search" onclick="{!c.doSearch}"/>
+
+    </div>
+    
+    
+    <div class="slds-p-around_xx-large">  
+        <div class="slds-box slds-box_small">
+			<p class="slds-align_absolute-center slds-text-heading_large"> {!v.selectedValue} List</p>
+		</div>
+    <lightning:datatable data="{! v.acctList }" 
+                         columns="{! v.mycolumns1 }" 
+                         keyField="id"
+                         hideCheckboxColumn="true"/>
+    </div>   
+</aura:component>

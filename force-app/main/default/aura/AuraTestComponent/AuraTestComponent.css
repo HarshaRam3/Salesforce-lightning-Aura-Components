@@ -1,0 +1,11 @@
+/* For select TOP level <p> element */
+ 
+h1.THIS  {
+    color: Red;
+    font-weight: Italic;
+}
+ 
+p.THIS {
+    color:red;
+    font-weight: bold;
+}

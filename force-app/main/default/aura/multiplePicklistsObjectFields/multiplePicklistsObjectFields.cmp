@@ -1,0 +1,15 @@
+<aura:component controller="FireClass"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" >    
+    <aura:handler name="init" value="{!this}" action="{!c.init2winit}" />
+    <aura:attribute name="options" type="List" />
+    
+    <lightning:dualListbox name="fields"  
+                           label= "Fields" 
+                           sourceLabel="Available" 
+                           selectedLabel="Selected" 
+                           fieldLevelHelp="This is a dual listbox" 
+                           options="{!v.options}" 
+                           />
+    
+</aura:component>

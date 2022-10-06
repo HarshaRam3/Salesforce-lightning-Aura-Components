@@ -1,0 +1,114 @@
+<apex:page Controller="ObjectSearchPageController">
+<style>
+/* Use For Waiting Process */    
+#assign-action-spinner-main {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color:rgba(0,0,0,.6);
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+    align: center;
+    vertical-align: middle;
+}
+
+#assign-action-spinner-content {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    z-index: 1000;
+    background-color: #F5FCFF;
+    width: 204;
+    height: 40; 
+    border-radius: 1em;
+    border: 1px solid #CEECFF;
+    padding: 20px 40px 20px 40px;
+    margin-left: -116px;
+    margin-top: -36px;
+}
+#assign-action-spinner-content img {
+    width: 30;
+    height: 12;
+    align: center;
+    vertical-align: middle;
+}
+
+#assign-action-spinner-content p {
+    display: inline;
+    font-size: 135%;
+    font-weight: bold;
+}
+</style>
+    <apex:form >
+         <!-- Status Bar -->
+        <apex:outputpanel >
+          <apex:actionStatus id="statusBar" layout="block">
+           <apex:facet name="start">
+             <div id="assign-action-spinner-main">
+                <div id="assign-action-spinner-content">
+                <img src="/resource/1563709245000/Loader" style= "height:50px;" alt="Processing..." title="Processing..." />
+                &nbsp; &nbsp;
+                <p>Processing...</p>
+             </div>
+            </div>
+          </apex:facet>
+        </apex:actionStatus>
+      </apex:outputpanel>
+      <!-- End Of Status -->
+      
+       <!--     <apex:outputpanel style="width:10px;">
+            <apex:actionstatus id="status">
+              <apex:facet name="start">
+                    <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." style="width:20px;"/>
+                    <span class="waitingDescription"></span>
+              </apex:facet>
+         </apex:actionstatus>
+         </apex:outputpanel>  -->
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Select Object" columns="4">
+                <apex:inputCheckbox value="{!isAcc}" label="Account"/>
+                <apex:inputCheckbox value="{!isOpp}" label="Opportunity"/>
+                <apex:inputCheckbox value="{!isLead}" label="Lead"/>
+                <apex:inputCheckbox value="{!isCase}" label="Case"/>
+            </apex:pageBlockSection>
+            <apex:pageblockSection columns="3">
+                <apex:outputText value="Record Name: " style="font-weight:bold;"/>
+                <apex:inputText value="{!searchText}" title="Enter Record Name"/>
+                <apex:commandButton value="Go" action="{!getMatchedRecords}" 
+                    reRender="thePanel" status="statusBar"/>
+            </apex:pageblockSection>
+            
+            <apex:outputPanel id="thePanel">
+            <apex:pageMessages ></apex:pageMessages>
+                <apex:pageblockTable value="{!accountList}" var="ac" 
+                        rendered="{!NOT(ISNULL(accountList)) && accountList.size > 0}">
+                    <apex:column value="{!ac.Name}"/>
+                    <apex:column value="{!ac.AnnualRevenue}"/>
+                    <apex:column value="{!ac.Industry}"/>
+                </apex:pageblockTable>
+                
+                <apex:pageblockTable value="{!opptyList}" var="op"
+                        rendered="{!NOT(ISNULL(opptyList)) &&opptyList.size > 0}">
+                    <apex:column value="{!op.Name}"/>
+                    <apex:column value="{!op.Amount}"/>
+                    <apex:column value="{!op.StageName}"/>
+                </apex:pageblockTable>
+                
+                <apex:pageblockTable value="{!leadList}" var="lead" 
+                        rendered="{!NOT(ISNULL(leadList)) && leadList.size > 0}">
+                    <apex:column value="{!lead.Name}"/>
+                    <apex:column value="{!lead.Status}"/>
+                    <apex:column value="{!lead.LeadSource}"/>
+                </apex:pageblockTable>
+                
+                <apex:pageblockTable value="{!casetList}" var="cs" 
+                        rendered="{!NOT(ISNULL(casetList)) && casetList.size > 0}">
+                    <apex:column value="{!cs.CaseNumber}"/>
+                    <apex:column value="{!cs.Status}"/>
+                    <apex:column value="{!cs.Priority}"/>
+                </apex:pageblockTable>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

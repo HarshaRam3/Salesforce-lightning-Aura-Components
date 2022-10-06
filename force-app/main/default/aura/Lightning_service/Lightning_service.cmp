@@ -1,0 +1,17 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" description="APIServiceComponent" >
+
+    <aura:attribute name="hasError" type="Boolean" />
+    <aura:attribute name="errorDescription" type="String" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}" />
+
+    <aura:method access="public" name="invokeAPI" action="{!c.invokeAPI}">
+		
+		<aura:attribute name="endpointURL" type="String" required="true" />
+        <aura:attribute name="inputParameter" type="String" required="true" />
+        <aura:attribute name="successCallback" type="Function" />
+        <aura:attribute name="errorCallback" type="Function" />
+
+    </aura:method>
+
+</aura:component>

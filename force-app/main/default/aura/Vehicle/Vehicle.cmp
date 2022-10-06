@@ -1,0 +1,7 @@
+<!--Description : Fetching data of sObject using Lightning Component 
+ * Created by : Harsha M R 
+ * Date : 6 Aug 2019
+ -->
+<aura:component implements="force:appHostable">
+	
+</aura:component>

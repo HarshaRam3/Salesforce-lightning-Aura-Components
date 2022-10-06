@@ -1,0 +1,10 @@
+<apex:page controller="AccountNameDemo" lightningStyleSheets="[true]">
+    <apex:form >
+    <apex:commandButton action="{!AccountList}" value="AccountsName" id="theButton"/>
+        <br/>
+        <apex:repeat value="{!listofAccounts}" var="acc" rendered="{!showAccount}">
+		<apex:outputText value="{!acc.name}"></apex:outputText>
+			<br/>
+		</apex:repeat>
+    </apex:form>
+</apex:page>

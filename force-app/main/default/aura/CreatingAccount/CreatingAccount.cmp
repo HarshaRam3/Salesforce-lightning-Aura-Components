@@ -1,0 +1,52 @@
+<aura:component Controller="Student_Lightning_Controller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<!-- Attributes Declartion -->
+    <aura:attribute name = "Accounts" type = "Account" default="{ 'sobjectType': 'Account'}" />
+    <aura:attribute name="message" type="String"/>
+
+
+    <!-- Tags -->
+     <div class="slds-grid slds-gutters">
+       <div class="slds-col">
+         <div class="slds-brand-band slds-brand-band_medium">
+           <div class="slds-p-around_xx-large">
+             <div class="slds-align_absolute-center" >
+              <div>
+                 <!-- Header Tags -->
+                <b> <h1 Class='h'>Create Account Record</h1> 
+                  <!-- Input Fields -->
+                   <lightning:input aura:id="stdName"
+                                    label="Account Name"
+                                    type="String"
+                                    required="true"
+                                    value="{!v.Accounts.Name}"/></b> 
+                  <div>{!v.Accounts.Name}</div>
+       	 <lightning:input aura:id="stdClass"
+                                 	label="Phone"
+                                 	type="tel"
+                                 	value="{!v.Accounts.Phone}" />
+                  <div>{!v.Accounts.Phone}</div>
+                  
+      <lightning:input aura:id="stdRoll"
+                                  label="AnnualRevenue"
+                                  type="currency"
+                                  value="{!v.Accounts.AnnualRevenue}" currencyCode="IND" currencyDisplayAs="symbol"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div>{!v.Accounts.AnnualRevenue}</div>
+                  <lightning:input aura:id="stdRoll"
+                                  label="Industry"
+                                  type="Picklist"
+                                  value="{!v.Accounts.Industry}"/>
+                  <!----><div>{!v.Accounts.Industry}</div>
+                  <!-- Buttons -->
+          <div >
+                  <lightning:layout verticalAlign="end">
+                 <lightning:button variant="neutral"  aura:id="cancelId" label="Cancel"  onclick="{!c.doCancel}"/> <br></br>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+           	<lightning:button variant="brand"  aura:id="saveId" label="Save"  onclick="{!c.doSave}"/> <br></br>
+                     </lightning:layout>
+                  </div>
+          </div>
+         </div> 
+        </div>
+      </div>
+    </div>
+   </div>
+</aura:component>

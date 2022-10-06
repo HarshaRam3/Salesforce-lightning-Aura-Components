@@ -1,0 +1,23 @@
+<aura:component >
+   <aura:attribute name="num1" type="integer" />
+        <aura:attribute name="num2" type="integer"/>
+
+		<aura:attribute name="Whom" type="String" default="Harsha" access="public"/>
+    	<aura:attribute name="Age" type="integer" default="24" access="public"/>
+        <aura:attribute name="color" type="String[]" default="['red', 'green', ]" access="public"/>
+		<aura:attribute name="ContactObj" type="Contact" access="public"/>
+    <Lightning:input aura:id="testInput" label="Enter Age"/>
+    <Lightning:input aura:id="testInpu" label="Enter Age"/>
+    <h1 Style="background-color=black; color=white; font-size=30px;"> Welcome {!v.Whom} </h1>
+    <div class="slds-var-p-around_large">
+        <lightning:input type="number" name="input1" label="Enter a number" value="{!v.num1}"></lightning:input>
+    <lightning:input type="number" name="input2" label="Enter a number" value="{!v.num2}">   </lightning:input>
+        {!v.num1} * {!v.num2} = {!mult(v.num1,v.num2)}<br/><br/><br/>
+        <Lightning:button label="Click me to testComponent Methods!" value="Component Methods" onclick="{!c.doClick}"/>
+  </div>
+    		<aura:attribute name="input1" type="integer" required="true"/>
+        	<aura:attribute name="input2" type="integer" required="true"/>
+        <lightning:input type="number" value="{!v.input1}" label="enter number1"/>
+        <lightning:input type="number" value="{!v.input2}" label="enter number2"/>
+
+</aura:component>

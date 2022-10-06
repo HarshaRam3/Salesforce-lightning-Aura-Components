@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<!-- Wrapper/Parent component called directly from the Lightning Application -->
+        <!-- Attribute to store total income coming through the event -->
+        <aura:attribute name="totalIncome" type="decimal" default="0" ></aura:attribute>
+        <!-- Handler defined to handle 'totalIncomeComponentEvent' name same as used in registerEvent tag -->
+        <aura:handler name="totalIncomeComponentEvent" event="c:LightningEventsevt"  action="{!c.handleTotalIncomeComponentEvent}"></aura:handler>
+        Outer Component
+        <!-- Inner component section with border -->
+        <div class="innerComponent">
+                Inner Component Section Begin
+               <!-- Calling the inner component container -->
+                <c:LightningEventsCompWrapper>
+                        <!-- Calling the source component -->
+                        <c:LightningEventComp />
+                </c:LightningEventsCompWrapper>
+                Inner Component Section End
+        </div>
+        <!-- Section to show total income -->
+        <span class="totalIncome">Total Income = {!v.totalIncome}</span>
+</aura:component>

@@ -1,0 +1,6 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" description="SampleComponent">
+	 <aura:attribute name="apiResponse" type="Object" />
+	
+    <c:Lightning_service aura:id="APIServiceComponent" />
+
+</aura:component>

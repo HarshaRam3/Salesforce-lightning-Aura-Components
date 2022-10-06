@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	
+    <div class="slds-p-around_large">
+        <h1 style="background-color:green; color:black; font-size:40px;"> new tets 1 </h1>
+    	<p> new test2 </p>
+    	<span> new test 3</span>
+    </div>
+</aura:component>

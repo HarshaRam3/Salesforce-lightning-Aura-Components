@@ -1,0 +1,5 @@
+<aura:component>
+    <aura:attribute name="items" type="List" default="Account"
+                />
+    <p><lightning:pillContainer items="{!v.items}"></lightning:pillContainer></p>
+</aura:component>

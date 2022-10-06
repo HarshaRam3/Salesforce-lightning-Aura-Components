@@ -1,0 +1,35 @@
+<aura:component controller="genericObjectDataTable" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="objName" type="String" />
+    <aura:attribute name="sObjects" type="sObject[]"/>
+    <aura:attribute name="fieldNames" type="String[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<div style="height: 50px; font-size:38px;" align="center"> List of {!v.objName} Records </div>
+  
+    <div style="height: 300px" class="slds-card__header slds-grid">
+<table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered slds-table_striped">
+     <thead class="center">
+         <tr class="slds-text-title_caps">
+                <aura:iteration items="{!v.fieldNames}" var="fieldName">
+                       <th scope="col">
+                             <div title="{!fieldName}">{!fieldName}</div>
+                       </th>
+                </aura:iteration>
+          </tr>
+	</thead>
+    
+	<tbody>
+			<aura:iteration items="{!v.sObjects}" var="object">
+					<tr>
+						<aura:iteration items="{!v.fieldNames}" var="fieldName">
+							<th scope="row" data-label="{!fieldName}">
+								<div class="">
+									<c:genericObjectDatatableChild objName="{!object}" fieldName="{!fieldName}"/>
+								</div>
+							</th>
+						</aura:iteration>
+					</tr>
+			</aura:iteration>                                        
+	</tbody>
+</table>
+    </div>
+</aura:component>

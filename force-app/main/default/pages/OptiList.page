@@ -1,0 +1,45 @@
+<apex:page standardController="Opportunity" recordSetVar="OptiList">
+    <apex:form >
+    <apex:variable var="i" value="{!1}" id="var"/>
+    <apex:variable var="rowCount" value="{!1}" id="rowCount"/> 
+
+        <apex:outputPanel id="thePanel">
+                  <apex:variable var="i" value="{!i-rowCount}" rendered="{!i!=1}" /> 
+        </apex:outputPanel>
+              
+     <apex:pageblock title="Opportunity List" id="oppBlock">
+              <!--<apex:variable var="rowCount" value="{!1}" /> -->
+        <apex:pageBlockTable value="{!OptiList}" var="opp" id="oppTable" >
+           <!--    <apex:variable var="rowCount" value="{!rowCount+1}" id="var"/> -->
+          
+            <apex:column headerValue="Sr no">
+                {!i}
+                <apex:variable var="i" value="{!i+1}"/>
+            </apex:column>
+            
+            <apex:column Headervalue="Business deal">
+                <apex:outputLink value="/{!opp.id}" target="_blank">
+                    {!opp.name}                
+                </apex:outputLink>
+            </apex:column>
+            
+            <apex:column Headervalue="Account">
+                <apex:outputLink value="/{!opp.account.id}" target="_blank">
+                    {!opp.account.name}                
+                </apex:outputLink>
+            </apex:column>
+                <!--  <apex:column value="{!opp.account.Name}"/>
+                <apex:column value="{!opp.name}"/> -->
+                <apex:column value="{!opp.stageName}"/>
+                <apex:column value="{!opp.Amount}"/>
+                
+          </apex:pageBlockTable>
+          
+              <apex:pageBlockButtons >
+                  <apex:commandButton value="Previous" action="{!Previous}" disabled="{!hasPrevious==false}" reRender="oppBlock,thePanel"/>
+                  <apex:commandButton value="Next" action="{!Next}" disabled="{!hasNext==false}" rerender="oppBlock" />
+              </apex:pageBlockButtons>
+              
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

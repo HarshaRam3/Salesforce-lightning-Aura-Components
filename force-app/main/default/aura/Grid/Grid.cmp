@@ -1,0 +1,12 @@
+<aura:component >
+    <div class="h">
+	<div class="slds-grid">
+  <div class="slds-col slds-order_2 slds-large-order_1">
+    <span >1</span>
+  </div>
+  <div class="slds-col slds-order_1 slds-large-order_2">
+    <span>2</span>
+  </div>
+</div>
+        </div>
+</aura:component>

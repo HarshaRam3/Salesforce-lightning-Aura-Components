@@ -1,0 +1,23 @@
+<apex:page controller="getAvgclass">
+
+ <apex:form >
+<apex:pageBlock id="frm">
+<apex:pageBlockSection columns="1">
+<apex:inputText label="Num1:" id="text1" value="{!text1}"/>
+<apex:inputText label="Num2:" id="text2" value="{!text2}"/>
+<apex:inputText label="Num3:" id="text3" value="{!text3}"/>
+<apex:inputText label="Num4:" id="text4" value="{!text4}"/>
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+
+<div style="position:relative;left:210px;">
+<apex:commandButton value="Click" id="button" style="width:80px" action="{!doAvg}" reRender="displayAvg" />
+</div>
+<apex:pageBlock id="displayAvg" >
+<apex:outputPanel rendered="{!show}">
+Average Result :{!result}
+</apex:outputPanel>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

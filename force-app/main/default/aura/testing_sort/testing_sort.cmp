@@ -1,0 +1,22 @@
+<aura:component controller="SchemaRecord_TaskSvrController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" >
+	   <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+  <!--  
+    <aura:attribute name="PageHeading" type="String" default="Schema Class In Lightning to Query all Objects"/>
+    <aura:attribute name="pickl" type="List" />
+    <aura:attribute name="selectedValue" type="String" default="Account"/>
+    <aura:attribute type="Account[]" name="acctList"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="sortedBy" type="String" default="Name"/>
+    <aura:attribute name="sortedDirection" type="String" default="asc"/>-->
+    <aura:handler name="init" value="{!this}" action="{!c.doSearch}" />
+<aura:attribute name="options" type="List" />
+<lightning:dualListbox name="fields"  
+                       label= "Fields" 
+                       sourceLabel="Available" 
+                       selectedLabel="Selected" 
+                       fieldLevelHelp="This is a dual listbox" 
+                       options="{!v.options}" 
+                      />
+</aura:component>

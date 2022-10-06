@@ -1,0 +1,12 @@
+<apex:page StandardController="Account">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                
+                    <apex:outputField value="{!Account.Industry}"/>
+                
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

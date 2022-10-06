@@ -1,0 +1,13 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="intervalId" type="Integer" default="0"/>
+    
+    <div id="parentDIV" style="overflow:hidden">
+        <p style="position:relative;" id="tofloat">
+            <b><span style="color:red">Important Note : </span>
+            I am Floating (Left to Right) Imformation...</b>
+        </p>
+    </div> -->
+    <aura:attribute name="customMessage" type="String" />
+    <p> <c:helloMessage message="{!v.customMessage}"/> </p>
+</aura:component>

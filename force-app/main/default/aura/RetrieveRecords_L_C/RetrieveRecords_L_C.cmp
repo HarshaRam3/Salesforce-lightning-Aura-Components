@@ -1,0 +1,21 @@
+<!--
+ Description :  create a new Lightning component that will use the controller,
+			   you just created, and will consist of markup to display the records.
+ Created by  : Harsha M R
+ Created Date: 24 jul 2019
+-->
+<aura:component  controller="RetrieveRecords">
+    <aura:handler name="init" action="{!c.retrieve}" value="{!this}"/>
+    <aura:attribute name="Contact" type="Contact[]"/>
+    
+    
+        <aura:iteration items="{!v.Contact}" var="Contact">
+
+                <div class="slds-p-horizontal_xx-large">
+           <h3> <b>{!Contact.Account}</b> </h3> 
+                     	<h3> <b>{!Contact.Name}</b> </h3>     
+
+            </div>
+        </aura:iteration>
+   
+    </aura:component>

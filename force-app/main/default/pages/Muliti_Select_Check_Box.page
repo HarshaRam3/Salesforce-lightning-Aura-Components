@@ -1,0 +1,25 @@
+<apex:page standardController="Opportunity" extensions="MultiCheckBoxExtn" tabStyle="Opportunity" id="thepg">
+    <apex:form id="theFm" >
+     <apex:pageBlock id="thePB" >
+        <apex:pageblockSection title="Opporutnity Details" id="thePbs1" collapsible="false">
+         <apex:inputfield value="{!opp.name}" id="name1"/>
+         <apex:inputField value="{!opp.closeDate}"/>
+          <apex:inputField value="{!opp.stageName}"/>
+        </apex:pageblockSection>
+     
+
+         <apex:pageBlockSection title="Multiselect Picklist to Checkbox" columns="2" collapsible="false" id="thePbs2">
+         <apex:outputLabel value="{!$ObjectType.opportunity.Fields.Multi_select_picklist__c.InlineHelpText}" />
+           <apex:selectcheckboxes layout="pageDirection"  value="{!MPItems}" label="" id="checkbox1">                   
+             <apex:selectoptions value="{!MPOptions}"  > </apex:selectoptions>       
+            </apex:selectcheckboxes>
+         </apex:pageBlockSection>
+        
+        <apex:pageblockButtons >
+         <apex:commandButton value="Save" action="{!saveOpp}"/>
+        
+        </apex:pageblockButtons>
+        </apex:pageBlock>
+    
+    </apex:form>
+</apex:page>

@@ -1,0 +1,21 @@
+<aura:component controller="ReconciliationController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+	<!-- Attributes for the Component -->
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="thisRecon" type="Name" />
+    
+    <!-- Attributes for the Benefits Edit DataTable -->
+    <aura:attribute name="tableCols" type="List" />
+    
+    <!-- Attributes for the Benefits Status List -->
+    <aura:attribute name="Account" type="Name[]" />
+    
+    <!-- Initializer -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <!-- Component -->
+    <lightning:card title="Benefit Vendors" class="container" >
+            <lightning:datatable data="{! v.benefits }"
+                                 columns="{! v.tableCols }"
+                                 keyField="Id"/>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,38 @@
+<aura:component >
+	<!--- Declartion -->
+<aura:attribute name="input1" type="integer" description="For First Input" />
+<aura:attribute name="input2" type="integer" description="For Second Input" />
+<aura:attribute name="output" type="integer" description="Output" />
+
+<lightning:accordion activeSectionName="A">
+    <Lightning:accordionSection Label="new">
+<!-- Fields -->
+<lightning:layout horizontalAlign="center" >
+<lightning:layoutItem>
+<lightning:input type="number" value="{!v.input1}" label="Please Enter First Number:" required="true"/>
+</lightning:layoutItem>
+
+
+<lightning:layoutItem>
+<lightning:input type="number" value="{!v.input2}" label="Please Enter Second Number:" required="true"/><br></br>
+</lightning:layoutItem>
+</lightning:layout>
+
+<lightning:layout horizontalAlign="center" >
+<b >This is Results {!v.input1} and {!v.input2} is : {!v.output}</b> 
+<br></br>
+<br></br>
+</lightning:layout>
+<lightning:layout horizontalAlign="center">
+<!-- Buttons -->
+<lightning:button variant="brand" value="Component methods" label="Add" onclick="{!c.doAdd}"/> 
+<lightning:button variant="brand" value="Component methods" label="Sub" onclick="{!c.doSub}"/>
+<lightning:button variant="brand" value="Component methods" label="multiply" onclick="{!c.domul}"/>
+<lightning:button variant="brand" value="Component methods" label="Div" onclick="{!c.doDiv}"/>
+
+</lightning:layout>
+        </Lightning:accordionSection>
+    </lightning:accordion>
+
+
+</aura:component>

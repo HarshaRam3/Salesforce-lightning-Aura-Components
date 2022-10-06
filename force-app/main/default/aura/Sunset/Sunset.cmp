@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="newExpense" type="Account"
+                default="{
+                             'sobjectType': 'Account.name',
+                             'Name': '',
+                         }"/>
+    <p>Name of Salesforce CEO is {!v.Account.name}</p>
+</aura:component>

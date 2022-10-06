@@ -1,0 +1,127 @@
+<aura:component controller="lightning_task1">
+    
+    <!-- Attribute Declaration -->
+    <aura:attribute name="data" type="object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="item" type="List" />
+    <aura:attribute name="numbers" type="List"/>
+    <aura:attribute name="selection" type="List" />
+    <aura:attribute name="selectedRows" type="List"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="iconName" type="String" default="standard:account"/>
+    <aura:attribute name="sortBy" type="String"/>
+    <aura:attribute name="sortDirection" type="String"/>
+    <aura:attribute name="enableInfiniteLoading" type="Boolean" default="true"/>
+    <aura:attribute name="initialRows" type="Integer" default="10"/>
+    <aura:attribute name="currentCount" type="Integer" default="10"/>
+    <aura:attribute name="totalRows" type="Integer" default="0"/>
+    <aura:attribute name="loadOffset" type="Integer" default="1"/>
+    
+    <aura:attribute name="searchResult" type="List"  />
+    <aura:attribute name="searchKeyword" type="String" />
+    <aura:attribute name="Message" type="boolean" default="false"  />
+    <aura:attribute name="validity" type="string"/>
+    <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide" />
+    
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.show}"/>
+    
+    
+    <!-- Lightning Data Table -->
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_2-of-3">
+            <!-- input grid -->
+            <div class="slds-grid slds-grid_vertical-align-start" style="height:100px">
+                <div class="slds-col">
+                    <lightning:select name="select1" label="Select DataType:">
+                        <option value="">Select DataType....</option>
+                        <option value="1">Text</option>
+                        <option value="2">Phone</option>
+                        <option value="3">Picklist</option>
+                    </lightning:select>
+                </div>
+                
+                <div class="slds-col">
+                    <lightning:layout>
+                        <lightning:layoutItem size="5" padding="around-small">
+                            <lightning:input value="{!v.searchKeyword}"
+                                             placeholder="search"
+                                             aura:id="searchFields"
+                                             label="search field"/>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="5" padding="around-small">
+                            <lightning:button onclick="{!c.Search}"
+                                              variant="brand"
+                                              label="Search"
+                                              iconName="utility:search"/> 
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <aura:if isTrue="{!v.Message}">
+                        <div class="slds-notify_container slds-is-relative">
+                            <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                                <div class="slds-notify__content">
+                                    <h2 class="slds-text-heading_small">No Records Found...</h2>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </aura:if>
+                </div>
+            </div>
+            
+            <tbody>
+                <tr aria-selected="false" class="slds-hint-parent">
+                    <td class="slds-text-align_right" role="gridcell" tabindex="0">
+                        <div class="slds-checkbox_add-button">
+                            <input type="checkbox" class="slds-assistive-text" id="add-checkbox-17" value="add-checkbox-17" tabindex="-1" />
+                            <span class="slds-assistive-text">Select item 1</span>
+                            
+                            <div>
+                                
+                                <lightning:datatable
+                                                     showRowNumberColumn="true"
+                                                     slds-checkbox="true"
+                                                     class="slds-checkbox "
+                                                     keyField="id"
+                                                     aura:id="dataTable"
+                                                     data="{! v.data }"
+                                                     columns="{! v.columns }"
+                                                     onrowselection="{! c.Addme}"
+                                                     onsort="{!c.handleSort}"
+                                                     enableInfiniteLoading="{!v.enableInfiniteLoading}"
+                                                     loadMoreOffset="{!v.loadOffset}"
+                                                     
+                                                     />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </div>
+        
+        
+        <!-- Columns 2 -->
+        <div class="slds-col slds-size_1-of-3">
+            <h1 class="gs"> <lightning:dynamicIcon type="waffle" alternativeText="Application launcher"/>
+                Show Selected Records </h1>
+            <div>
+                <h2>No.of records:: {!v.selectedRowsCount} </h2>
+            </div>
+            <aura:iteration items="{!v.selection}" var="sr" indexVar="index">
+                <div class="slds-pill_container">
+                    <lightning:pill class="slds-m-around_xx-small"  label="{!sr.Name}" name="{!sr.Id}"  onremove="{!c.Onremove}"   >
+                        <!-- name="{!index}" label="{!sr.Name}" -->
+                        
+                        <aura:set attribute="media">
+                            <lightning:icon iconName="{!v.iconName}"/>
+                        </aura:set>
+                    </lightning:pill>
+                </div>
+                
+            </aura:iteration>
+            
+            <lightning:button variant="brand" label="Save Elements" title="Save Elements" onclick="{! c.handleClick }" />
+        </div>
+    </div>
+</aura:component>

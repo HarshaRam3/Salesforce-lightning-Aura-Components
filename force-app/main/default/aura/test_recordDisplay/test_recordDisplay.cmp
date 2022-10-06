@@ -1,0 +1,61 @@
+<aura:component controller="SchemaRecord_TaskSvrController_dualList" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" >
+    
+    
+    <aura:attribute name="data" type="Object[]"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="pickl" type="List" />
+    <aura:attribute name="selectedValue" type="String" />
+    <aura:attribute name="listSkillsOptions" type="List" default="[]"/>
+    <aura:attribute name="selectedSkillsItems" type="List" default="[]"/>
+    <aura:attribute name="sortedBy" type="String" default="Name"/>
+    <aura:attribute name="sortedDirection" type="String" default="ASC"/>
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <div>
+        <div class="slds-grid slds-grid--pull-padded slds-p-around_xx-large">
+            
+            <div class="slds-col--padded">
+                <lightning:select aura:id="selectid" label="Select Object" name="obj" value="{!v.selectedValue}" onchange="{!c.doSearch}">
+                    <option value="" text="- None -" />
+                        <aura:iteration items="{!v.pickl}" var="perk">
+                            <option value="{!perk}" text="{!perk}" />
+                        </aura:iteration>
+                </lightning:select>
+            </div>
+            
+            <div class="slds-col--padded">
+                <lightning:dualListbox aura:id="selectfield"
+                                       name="fields"
+                                       label="Select Fields"
+                                       sourceLabel="Available Fields"
+                                       selectedLabel="Selected Fields"
+                                       options="{!v.listSkillsOptions }"
+                                       value="{!v.selectedSkillsItems}"
+                                       onchange="{!c.handleChange}"
+                                       disableReordering="true"/>
+            </div>
+            
+            <div class="slds-col--padded">
+                <lightning:textarea name="input" readonly="true" value="{!v.selectedSkillsItems}" label="Selected Object Fields" />
+            </div>
+            
+        </div>
+        
+        <div class="slds-col slds-size_2-of-3 slds-align_absolute-center">
+            <lightning:button variant="brand" label="Get Records" onclick="{!c.getSelectedFields}" />
+        </div>
+        
+        <div style="height: 500px" class="slds-p-around_xx-large">
+            
+            <lightning:datatable
+                                 keyField="id"
+                                 data="{! v.data }"
+                                 columns="{! v.columns }"
+                                 hideCheckboxColumn="true"
+                                 sortedBy="{!v.sortedBy}"
+                                 sortedDirection="{!v.sortedDirection}"
+                                 onsort="{!c.handleColumnSorting}"/>
+        </div>
+    </div>
+</aura:component>

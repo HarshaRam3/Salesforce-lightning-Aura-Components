@@ -1,0 +1,31 @@
+<aura:component controller="PicklistC"
+	                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="ObjectName" type="String" default="Account" access="global"/> <!-- Object Name as String-->
+    <aura:attribute name="Name" type="String" default="Name" access="global"/>  <!-- Field Name as String-->
+    <aura:attribute name="Locality" type="String" default="Locality__c" access="global"/> <!-- Field Name as String-->
+    <aura:attribute name="Generic" type="String" default="Generic__c" access="global"/> <!-- Field Name as String-->
+    <aura:attribute name="RatingPicklist" type="String[]" />  <!-- Picklist Values of Rating__c Field -->
+    <aura:attribute name="LocalityPicklist" type="String[]" />  <!-- Picklist Values of Locality__c Field -->
+    <aura:attribute name="GenericPicklist" type="String[]" />  <!-- Picklist Values of Generic__c Field -->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:select label="Rating">
+        <aura:iteration items="{!v.RatingPicklist}" var="val">
+            <option value="{!val}"> {!val}</option>
+        </aura:iteration>
+    </lightning:select>
+    
+    <lightning:select label="Locality">
+        <aura:iteration items="{!v.LocalityPicklist}" var="val">
+            <option value="{!val}"> {!val}</option>
+        </aura:iteration>
+    </lightning:select>
+    
+    <lightning:select label="Generic">
+        <aura:iteration items="{!v.GenericPicklist}" var="val">
+            <option value="{!val}"> {!val}</option>
+        </aura:iteration>
+    </lightning:select>
+</aura:component>
